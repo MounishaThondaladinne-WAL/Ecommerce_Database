@@ -1,0 +1,27 @@
+"use strict";
+const { Model } = require("sequelize");
+module.exports = (sequelize, DataTypes) => {
+  class EcommerceCategory extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+      this.belongsToMany(models.Merchant, {
+        through: "Merchant_Category",
+      });
+    }
+  }
+  EcommerceCategory.init(
+    {
+      name: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "EcommerceCategory",
+    }
+  );
+  return EcommerceCategory;
+};
