@@ -1,39 +1,48 @@
-'use strict';
+"use strict";
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('E_User_Addresses', {
+    await queryInterface.createTable("E_User_Addresses", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       line1: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       line2: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       city: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       pincode: {
-        type: Sequelize.NUMBER
+        type: Sequelize.INTEGER,
       },
       mobile_number: {
-        type: Sequelize.NUMBER
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
+      userId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "EcommerceUsers",
+          key: "id",
+          as: "userId",
+        },
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('E_User_Addresses');
-  }
+    await queryInterface.dropTable("E_User_Addresses");
+  },
 };

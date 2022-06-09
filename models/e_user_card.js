@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   E_User_Card.init(
     {
-      cardnumber: DataTypes.NUMBER,
+      cardnumber: DataTypes.INTEGER,
       expiry_date: DataTypes.DATE,
-      cvv: DataTypes.NUMBER,
+      cvv: DataTypes.INTEGER,
     },
     {
       sequelize,

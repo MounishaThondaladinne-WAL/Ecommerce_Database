@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       card_number: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       card_holder_name: {
         type: Sequelize.STRING,
@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.DATE,
       },
       cvv: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
@@ -27,6 +27,15 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+      },
+      userId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "EcommerceUsers",
+          key: "id",
+          as: "userId",
+        },
       },
     });
   },

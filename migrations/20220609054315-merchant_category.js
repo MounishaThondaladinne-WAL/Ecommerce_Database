@@ -1,14 +1,12 @@
 "use strict";
+
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("E_Cart_Items", {
+    await queryInterface.createTable("merchant_category", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
-      quantity: {
         type: Sequelize.INTEGER,
       },
       createdAt: {
@@ -19,27 +17,28 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      productId: {
+      merchantId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: "E_Products",
+          model: "Merchants",
           key: "id",
-          as: "productId",
+          as: "merchantId",
         },
       },
-      cartId: {
+      categoryId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: "E_Carts",
+          model: "EcommerceCategories",
           key: "id",
-          as: "cartId",
+          as: "categoryId",
         },
       },
     });
   },
+
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("E_Cart_Items");
+    await queryInterface.dropTable("merchant_category");
   },
 };
